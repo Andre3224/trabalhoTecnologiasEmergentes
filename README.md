@@ -26,3 +26,24 @@ sudo apt install python3 python3-pip
 
 No windows e outros sistemas, acesse o site oficial ou o link abaixo:
 * https://python.org.br/instalacao-windows/
+
+### Instale o Flask ###
+* Terminal: pip install flask werkzeug
+
+## Como Funciona ##
+
+Página de Registro:
+- O usuário entra com um nome de usuário e uma senha.
+- O sistema valida se o nome de usuário já está registrado. Se não, ele cria um novo usuário e registra a senha de forma segura (com hash).
+- Após o registro bem-sucedido, o usuário é redirecionado para a página de login.
+
+Página de Login:
+- O usuário entra com seu nome de usuário e senha.
+- O sistema valida as credenciais e, se estiverem corretas, cria uma sessão para o usuário.
+- Se a autenticação falhar, uma mensagem de erro será exibida.
+
+Página de Logout:
+- O usuário pode sair a qualquer momento, e a sessão será limpa.
+
+Para Instalar, clone o repositório ou realize o download dos arquivos, crie uma virtualização (Debian) e rode com o comando:
+ - python3 main.py
