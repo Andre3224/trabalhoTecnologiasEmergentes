@@ -1,8 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head><title>Dashboard</title></head>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1f36, #202135);
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #e60000;
+        }
+
+        .container {
+            background-color: #2c2c44;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 340px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 22px;
+        }
+
+        .action-btn {
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 20px;
+            background-color: white;
+            color: #2c2c44;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
 <body>
-    <h2>Bem-vindo, {{ username }}!</h2>
-    <p><a href="{{ url_for('logout') }}">Sair</a></p>
+
+    <form action="{{ url_for('logout') }}" method="get">
+        <button type="submit" class="logout-btn">Sair</button>
+    </form>
+
+    <div class="container">
+        <h2>Bem-vindo, {{ username }}!</h2>
+
+        <form action="{{ url_for('account') }}" method="get">
+            <button type="submit" class="action-btn">Gerenciar Conta</button>
+        </form>
+    </div>
 </body>
 </html>
