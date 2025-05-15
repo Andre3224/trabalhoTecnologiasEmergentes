@@ -75,6 +75,34 @@ def logout():
     flash('Você saiu da conta.', 'info')
     return redirect(url_for('login'))
 
+@app.route('/account', methods=['GET', 'POST'])
+def account():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        action = request.form['action']
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+
+        if action == 'update':
+            new_password = request.form['new_password']
+            hashed_pw = generate_password_hash(new_password)
+            cursor.execute("UPDATE users SET password = ? WHERE id = ?", (hashed_pw, session['user_id']))
+            conn.commit()
+            flash("Senha atualizada com sucesso!", "success")
+
+        elif action == 'delete':
+            cursor.execute("DELETE FROM users WHERE id = ?", (session['user_id'],))
+            conn.commit()
+            session.clear()
+            conn.close()
+            flash("Conta deletada com sucesso.", "info")
+            return redirect(url_for('register'))
+
+        conn.close()
+    return render_template('account.html', username=session['username'])
+
 if __name__ == '__main__':
     inicio_db()
     app.run(debug=True)
