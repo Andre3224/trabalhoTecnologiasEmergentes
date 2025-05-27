@@ -54,3 +54,13 @@ Para Instalar, clone o repositório ou realize o download dos arquivos, crie uma
 - **Python:** 3.11.2 (versão mínima suportada: 3.8)
 - **Dependências principais:**
   - Flask==2.2.3
+### Ferramentas e IDEs
+- IDE recomendada: **Visual Studio Code** (VSCode) - versão 1.79.0 ou superior
+- Extensões úteis:
+  - Python (Microsoft)
+  - Pylance
+  - GitLens (para controle de versão)
+- Ferramentas de linha de comando:
+  - Git (para controle de versão)
+  - pip (para gerenciamento de pacotes Python)
+  - virtualenv ou venv (para ambientes virtuais)
