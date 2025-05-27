@@ -103,12 +103,12 @@ def account():
         conn.close()
     return render_template('account.html', username=session['username'])
 
-@app.route('/admin')
+@app.route('/admin') #Criar uma aba para o admin
 def admin_panel():
-    if 'username' not in session or session['username'] != 'admin':
-        return redirect('/login')
+    if 'username' not in session or session['username'] != 'admin': #verificar se o usuario logado é o de administrador
+        return redirect('/login') #se não for, retorna para a tela de login
 
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db') #banco de dados
     cursor = conn.cursor()
     cursor.execute("SELECT id, username FROM users")
     users = cursor.fetchall()
@@ -118,9 +118,9 @@ def admin_panel():
 
 
 @app.route('/admin/delete/<int:user_id>', methods=['POST'])
-def admin_delete_user(user_id):
-    if 'username' in session and session['username'] == 'admin':
-        conn = sqlite3.connect('users.db')
+def admin_delete_user(user_id):# na aba de admins para remover os usuarios
+    if 'username' in session and session['username'] == 'admin': #similar ao anterior, verifica se é o usuario admin, que poderia ser modificado para qualquer outro usuario
+        conn = sqlite3.connect('users.db') #verifica o usr e remove do banco de dados
         cursor = conn.cursor()
         cursor.execute("DELETE FROM users WHERE id = ?", (user_id,))
         conn.commit()
