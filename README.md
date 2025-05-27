@@ -54,6 +54,7 @@ Para Instalar, clone o repositório ou realize o download dos arquivos, crie uma
 - **Python:** 3.11.2 (versão mínima suportada: 3.8)
 - **Dependências principais:**
   - Flask==2.2.3
+  - SQLAlchemy==1.4.46
 ### Ferramentas e IDEs
 - IDE recomendada: **Visual Studio Code** (VSCode) - versão 1.79.0 ou superior
 - Extensões úteis:
@@ -64,3 +65,11 @@ Para Instalar, clone o repositório ou realize o download dos arquivos, crie uma
   - Git (para controle de versão)
   - pip (para gerenciamento de pacotes Python)
   - virtualenv ou venv (para ambientes virtuais)
+
+### Requisitos de Sistema
+
+- Python 3.8 ou superior
+- Sistemas operacionais suportados:
+  - Windows 10+
+  - Linux (Ubuntu 20.04+ recomendado)
+  - macOS 10.15+
