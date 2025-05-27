@@ -47,3 +47,10 @@ Página de Logout:
 
 Para Instalar, clone o repositório ou realize o download dos arquivos, crie uma virtualização (Debian) e rode com o comando:
  - python3 main.py
+
+## Ambiente de Desenvolvimento
+
+### Versões Utilizadas
+- **Python:** 3.11.2 (versão mínima suportada: 3.8)
+- **Dependências principais:**
+  - Flask==2.2.3
