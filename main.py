@@ -20,7 +20,7 @@ def inicio_db(): #abrir o banco de dados
 
 @app.route('/')#Definir tela inicial
 def index():
-    return redirect(url_for('register')) #modificar para colocar um fundo com 2 botoes
+    return redirect(url_for('login')) #modificar para colocar um fundo com 2 botoes
 
 @app.route('/register', methods=['GET', 'POST']) #Resposvavel pelo registro, enviar ou receber
 def register():
@@ -102,6 +102,31 @@ def account():
 
         conn.close()
     return render_template('account.html', username=session['username'])
+
+@app.route('/admin')
+def admin_panel():
+    if 'username' not in session or session['username'] != 'admin':
+        return redirect('/login')
+
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, username FROM users")
+    users = cursor.fetchall()
+    conn.close()
+
+    return render_template('admin.html', users=users)
+
+
+@app.route('/admin/delete/<int:user_id>', methods=['POST'])
+def admin_delete_user(user_id):
+    if 'username' in session and session['username'] == 'admin':
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM users WHERE id = ?", (user_id,))
+        conn.commit()
+        conn.close()
+    return redirect('/admin')
+
 
 if __name__ == '__main__':
     inicio_db()

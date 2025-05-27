@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin</title>
+</head>
+<body>
+    <h2>Gerenciamento de Usuários</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                <td>
+                    {% if user[1] != 'admin' %}
+                    <form action="{{ url_for('admin_delete_user', user_id=user[0]) }}" method="POST" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Deseja realmente excluir {{ user[1] }}?');">Excluir</button>
+                    </form>
+                    {% else %}
+                    <em>Admin</em>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Voltar</a>
+</body>
+</html>

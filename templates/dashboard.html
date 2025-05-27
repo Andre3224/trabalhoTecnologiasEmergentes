@@ -64,6 +64,24 @@
         .action-btn:hover {
             background-color: #ddd;
         }
+        
+        .admin-btn {
+            padding: 12px;
+            margin-top: 20px;
+            width: 100%;
+            border: none;
+            border-radius: 20px;
+            background-color: #4da6ff; /* azul */
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .admin-btn:hover {
+            background-color: #1e90ff;
+        }
     </style>
 </head>
 <body>
@@ -78,6 +96,12 @@
         <form action="{{ url_for('account') }}" method="get">
             <button type="submit" class="action-btn">Gerenciar Conta</button>
         </form>
+        {% if session['username'] == 'admin' %}
+        <form action="{{ url_for('admin_panel') }}" method="get">
+            <button type="submit" class="admin-btn">Administração</button>
+        </form>
+        {% endif %}
     </div>
+    
 </body>
 </html>
